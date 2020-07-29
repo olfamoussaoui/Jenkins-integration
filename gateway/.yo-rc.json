@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.keyrus.recommender"
+    },
+    "jhipsterVersion": "6.10.1",
+    "applicationType": "gateway",
+    "baseName": "gateway",
+    "packageName": "com.keyrus.recommender",
+    "packageFolder": "com/keyrus/recommender",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZDZlZGRmYmNhN2Q3NzM3ZWQ2MGM3NThjOTY3YjUzY2UyZDAxOTNiM2M2NmVhNjlkZTFlMTM1NDdhMGFjZGEyODcwMWM5Yzc5ZjIyOTU5MGMyZTllMDQyNGE5ZDFmZDY5NWI0MGNkMTk2NzUwMWUzNjcxYWU1ODdkNmZhMGJlNzk=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "darkly",
+    "clientThemeVariant": "light",
+    "creationTimestamp": 1596027857980,
+    "testFrameworks": ["gatling", "cucumber"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}

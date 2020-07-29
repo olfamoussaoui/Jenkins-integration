@@ -1,0 +1,38 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.keyrus.recommender"
+    },
+    "jhipsterVersion": "6.10.1",
+    "applicationType": "microservice",
+    "baseName": "store",
+    "packageName": "com.keyrus.recommender",
+    "packageFolder": "com/keyrus/recommender",
+    "serverPort": "8082",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZTlmNThkNzg5OTExYjIyZjFhN2RjOWEzNjJkMDE4MmYyOTBlYTlkYmQ1OWQ5MTc2MmUwNzJjMTUzNGZlYmFlOWRjMmNlMzBiOWVmZDMwNDVjMzNjODg4Y2JmYjlkM2M1ZDgwODViZmRkNGFmMzZiNGQ2Y2EyNzVlMjlhNjY2YzQ=",
+    "embeddableLaunchScript": false,
+    "creationTimestamp": 1596029311593,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
