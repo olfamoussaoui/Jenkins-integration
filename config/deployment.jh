@@ -1,0 +1,6 @@
+deployment {
+  deploymentType docker-compose
+  appsFolders [gateway, store]
+  dockerRepositoryName "jenintegration"
+  consoleOptions [zipkin]
+}

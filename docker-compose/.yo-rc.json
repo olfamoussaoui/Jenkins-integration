@@ -1,0 +1,15 @@
+{
+  "generator-jhipster": {
+    "deploymentType": "docker-compose",
+    "gatewayType": "zuul",
+    "monitoring": "no",
+    "directoryPath": "../",
+    "appsFolders": ["gateway", "store"],
+    "clusteredDbApps": [],
+    "consoleOptions": [],
+    "serviceDiscoveryType": "eureka",
+    "dockerRepositoryName": "jenintegration",
+    "dockerPushCommand": "docker push",
+    "jwtSecretKey": "MDYwMTUwM2VmN2Q2ZDhkMjdlMDliOTEzMDZhYzZkYTZiMmRjMWQ2Mzg2ZmVhYWU3YjNhNzcwM2NlNjQ1ZTY3YjA5ZDM1Zjg5MDA1ZTdmMGM4ZGQ4MjJiOTllZTExYTgyNjY1ZA=="
+  }
+}
