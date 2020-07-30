@@ -14,23 +14,27 @@ node {
 	}
 
     stage('clean') {
-        sh "chmod +x mvnw"
-        sh "./gateway/mvnw -ntp clean -P-webpack"
+        sh "cd ./gateway && chmod +x mvnw"
+        sh "./mvnw -ntp clean -P-webpack"
     }
     stage('nohttp') {
+		sh "cd ./gateway"
         sh "./mvnw -ntp checkstyle:check"
     }
 
     stage('install tools') {
+		sh "cd ./gateway"
         sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v12.16.1 -DnpmVersion=6.14.5"
     }
 
     stage('npm install') {
+		sh "cd ./gateway"
         sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm"
     }
 
     stage('backend tests') {
         try {
+			sh "cd ./gateway"
             sh "./mvnw -ntp verify -P-webpack"
         } catch(err) {
             throw err
@@ -41,6 +45,7 @@ node {
 
     stage('frontend tests') {
         try {
+			sh "cd ./gateway"
             sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'"
         } catch(err) {
             throw err
@@ -50,11 +55,13 @@ node {
     }
 
     stage('packaging') {
+		sh "cd ./gateway"
         sh "./mvnw -ntp verify -P-webpack -Pprod -DskipTests"
         archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
     }
     stage('quality analysis') {
         withSonarQubeEnv('sonar') {
+			sh "cd ./gateway"
             sh "./mvnw -ntp initialize sonar:sonar"
         }
     }
