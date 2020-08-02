@@ -1,7 +1,7 @@
 version: '2'
 services:
   gateway:
-    image: gateway
+    image: gateway:latest
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - 'SPRING_PROFILES_ACTIVE=prod,swagger'
@@ -21,7 +21,7 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
 
   store:
-    image: store
+    image: store:latest
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - 'SPRING_PROFILES_ACTIVE=prod,swagger'
@@ -37,7 +37,16 @@ services:
       - POSTGRES_USER=store
       - POSTGRES_PASSWORD=
       - POSTGRES_HOST_AUTH_METHOD=trust
-
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 5454:5454/tcp
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=moussaoui.olfa1@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_LISTEN_PORT=5454
+  
   jhipster-registry:
     extends:
       file: jhipster-registry.yml
