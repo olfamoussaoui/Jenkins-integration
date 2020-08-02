@@ -55,7 +55,7 @@ node {
     }
     stage('quality analysis') {
         withSonarQubeEnv('sonar') {
-            sh "cd ./gateway && ./mvnw -ntp initialize sonar:sonar -Dsonar.host.url=http://localhost:9000"
+            sh "cd ./gateway && ./mvnw -ntp initialize sonar:sonar"
         }
     }
 }
