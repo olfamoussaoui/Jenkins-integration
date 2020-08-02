@@ -3,10 +3,16 @@ services:
   sonar:
     image: 'sonarqube:8.3.1-community'
     ports:
-      - '9001:9000'
-      - '9092:9092'
+      - '9000:9000'
+    networks:
+      - sonarnet
   jenkins:
     image: jenkins/jenkins
     ports:
       - '18080:8080'
       - '50000:50000'
+    networks:
+      - sonarnet
+networks:
+  sonarnet:
+    driver: bridge
