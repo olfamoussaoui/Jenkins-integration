@@ -15,23 +15,23 @@ node {
 
     stage('clean') {
         sh "cd ./gateway && chmod +x mvnw"
-        sh "cd ./gateway && ./mvnw -ntp clean -P-webpack"
+        sh "cd ./gateway && ./mvnw -X -ntp clean -P-webpack"
     }
     stage('nohttp') {
-        sh "cd ./gateway && ./mvnw -ntp checkstyle:check"
+        sh "cd ./gateway && ./mvnw -X -ntp checkstyle:check"
     }
 
     stage('install tools') {
-        sh "cd ./gateway && ./mvnw -ntp com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v12.16.1 -DnpmVersion=6.14.5"
+        sh "cd ./gateway && ./mvnw -X -ntp com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v12.16.1 -DnpmVersion=6.14.5"
     }
 
     stage('npm install') {
-        sh "cd ./gateway && ./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm"
+        sh "cd ./gateway && ./mvnw -X -ntp com.github.eirslett:frontend-maven-plugin:npm"
     }
 
     stage('backend tests') {
         try {
-            sh "cd ./gateway && ./mvnw -ntp verify -P-webpack"
+            sh "cd ./gateway && ./mvnw -X -ntp verify -P-webpack"
         } catch(err) {
             throw err
         } finally {
@@ -41,7 +41,7 @@ node {
 
     stage('frontend tests') {
         try {
-            sh "cd ./gateway && ./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'"
+            sh "cd ./gateway && ./mvnw -X -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'"
         } catch(err) {
             throw err
         } finally {
@@ -50,12 +50,12 @@ node {
     }
 
     stage('packaging') {
-        sh "cd ./gateway && ./mvnw -ntp verify -P-webpack -Pprod -DskipTests"
+        sh "cd ./gateway && ./mvnw -X -ntp verify -P-webpack -Pprod -DskipTests"
         archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
     }
     stage('quality analysis') {
         withSonarQubeEnv('sonar') {
-            sh "cd ./gateway && ./mvnw -ntp initialize sonar:sonar"
+            sh "cd ./gateway && ./mvnw -X -ntp initialize sonar:sonar"
         }
     }
 }
